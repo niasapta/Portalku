@@ -1,11 +1,11 @@
 package id.ac.polinema.lumajang.portalku.jurnal;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.util.Optional;
 
-public interface JurnalRepository {
-    List<Jurnal> findAll();
-    Optional<Jurnal> findById(Integer id);
-    Jurnal save(Jurnal jurnal);
-    boolean deleteById(Integer id);
+@Repository
+public interface JurnalRepository extends JpaRepository<Jurnal, Integer> {
+    List<Jurnal> findByPenerbit(String penerbit);
+    List<Jurnal> findByJudulContainingIgnoreCase(String kataKunci);
 }
